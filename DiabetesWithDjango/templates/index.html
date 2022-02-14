@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Diagnostico de Diabetes</title>
+     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" >
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="container" >
+      <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8">
+          <h1>PREVISÃO DIGITAL DE DIABETES<span>.</span></h1>
+          <h2>PREVISÃO EFICIENTE</h2>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+  <main id="main">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" >
+        <div class="section-title">
+          <h2>SERVIÇOS</h2>
+          <p>QUAL A SUA PREVISÃO</p>
+        </div>
+        <form method="post" enctype="multipart/form-data" action="predictdiabetes">
+        {%csrf_token %}
+            <div class="form-group row">
+            <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>Pregnancies</h4></label>
+            <div class="col-sm-4">
+            <input type="number" value="" name="Pregnancies" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter total pregnancies">
+            </div>
+            </div>
+        <div class="form-group row">
+            <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>Glucose</h4></label>
+            <div class="col-sm-4">
+            <input type="number"   value="" name="Glucose" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter Glucose Level">
+        </div>
+        </div>
+        <div class="form-group row">
+             <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>BloodPressure</h4></label>
+            <div class="col-sm-4">
+            <input type="number"  value="" name="BloodPressure" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter BloodPressure">
+            </div></div>
+
+        <div class="form-group row">
+            <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>SkinThickness</h4></label>
+            <div class="col-sm-4">
+            <input type="number"  value="" name="SkinThickness" class="form-control form-control-sm" id="colFormLabelSm" placeholder="SkinThickness">
+            </div></div>
+
+        <div class="form-group row">
+           <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>Insulin</h4></label>
+            <div class="col-sm-4">
+            <input type="number"   value="" name="Insulin" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter Insulin">
+            </div></div>
+        <div class="form-group row">
+            <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>BMI</h4></label>
+            <div class="col-sm-4">
+            <input type="number"   value="" step="0.01"name="BMI" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter BMI">
+            </div></div>
+
+        <div class="form-group row">
+            <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>DPFunction</h4></label>
+            <div class="col-sm-4">
+            <input type="number"   step="0.001" name="DiabetesPedigreeFunction" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter diabetes pedigree function">
+            </div></div>
+        <div class="form-group row">
+            <label  for="colFormLabelSm" class="col-sm-4 col-lg-2 col-form-label col-form-label-sm"><h4>Age</h4></label>
+            <div class="col-sm-4">
+            <input type="number"   value="" name="Age" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter your age">
+            </div></div>
+{%  if scoreval  %}
+           <h1>You are {{scoreval}}.</h1>
+ {% else%}
+ <input type="submit" value="Submit" >
+ {% endif %}
+          </form>
+      </div>
+    </section><!-- End Services Section -->
+</body>
+</html>
